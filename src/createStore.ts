@@ -3,7 +3,7 @@ import { shallow } from "./shallow";
 
 type Selector<S, E> = (state: S) => E;
 
-type SetState<S> = (partial: Partial<S>, replace?: boolean) => void;
+type SetState<S> = (partial: Partial<S>, options?: { replace?: boolean, flushUpdate?: boolean }) => void;
 export interface Actions<S> {
   [key: string]: (...payload: any[]) => <R>(set: SetState<S>, state: S) => any;
 }
@@ -38,13 +38,17 @@ function createStore<S, R extends Actions<S>>(initState: S, reducers: R) {
 
   let proxy: ReturnActions<S, R>;
 
-  const setState = (partial: Partial<S>, replace?: boolean) => {
+  const setState = (partial: Partial<S>, options?: {replace?: boolean, flushUpdate?: boolean}) => {
+    const { replace, flushUpdate } = options || {};
     const nextState = partial;
     if (!Object.is(nextState, state)) {
       state =
         (replace ?? (typeof nextState !== "object" || nextState === null))
           ? (nextState as S)
           : Object.assign({}, state, nextState);
+    }
+    if (flushUpdate) {
+      update();
     }
   };
 

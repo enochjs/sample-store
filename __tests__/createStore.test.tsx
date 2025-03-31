@@ -12,7 +12,7 @@ describe('createStore', () => {
     }
   };
 
-  const actions = {
+  const actions: any = {
     increment: (amount = 1) => (set: (partial: Partial<typeof initialState>, replace?: boolean) => void, state: typeof initialState) => {
       set({ count: state.count + amount });
     },

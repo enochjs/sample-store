@@ -32,8 +32,13 @@ const initialState = {
   }
 };
 
-// Define your actions
-const actions = {
+// Create the store
+const store = createStore(initialState, {
+  setLoading: (loading: boolean) => (set) => {
+    set({
+      loading,
+    })
+  }
   increment: (amount = 1) => (set, state) => {
     set({ count: state.count + amount });
   },
@@ -45,6 +50,8 @@ const actions = {
   },
   // Async action example
   fetchUser: (userId) => async (set) => {
+    // 第一种方式： store.getActions().setLoading(true)
+    // 第二种方式： set({ loading: true }, { flush: true })
     try {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
@@ -52,12 +59,11 @@ const actions = {
       return user;
     } catch (error) {
       console.error('Failed to fetch user:', error);
+    } finally {
+      store.setLoading(false)
     }
   }
-};
-
-// Create the store
-const store = createStore(initialState, actions);
+});
 
 // In your React component
 function Counter() {
