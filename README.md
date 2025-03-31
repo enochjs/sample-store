@@ -60,7 +60,8 @@ const store = createStore(initialState, {
     } catch (error) {
       console.error('Failed to fetch user:', error);
     } finally {
-      store.setLoading(false)
+        // set({ loading: true })
+        store.getActions().setLoading(false)
     }
   }
 });
