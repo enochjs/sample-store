@@ -1,0 +1,39 @@
+{
+  "name": "sample-store",
+  "version": "1.0.0",
+  "description": "A lightweight and efficient state management library for React applications",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enochjs/sample-store.git"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "store",
+    "management",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enochjs/sample-store/issues"
+  },
+  "homepage": "https://github.com/enochjs/sample-store#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "typescript": "^4.9.5"
+  }
+}
