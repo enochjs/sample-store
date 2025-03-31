@@ -12,11 +12,11 @@ yarn add sample-store
 
 ## Features
 
-- Simple and intuitive API
-- TypeScript support
-- Lightweight with minimal dependencies
-- React hooks integration
-- Efficient state updates with shallow comparison
+- Simple and intuitive API (简单直观的API)
+- TypeScript support (TypeScript支持)
+- Lightweight with minimal dependencies (轻量级，依赖少)
+- React hooks integration (React钩子集成)
+- Efficient state updates with shallow comparison (使用浅比较的高效状态更新)
 
 ## Usage
 
